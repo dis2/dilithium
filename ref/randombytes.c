@@ -2,7 +2,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
-#include <sys/syscall.h>
+//#include <sys/syscall.h>
 #include "randombytes.h"
 
 #define _GNU_SOURCE
@@ -34,7 +34,7 @@ static void randombytes_fallback(unsigned char *x, size_t xlen)
   }
 }
 
-#ifdef SYS_getrandom
+#if 0
 void randombytes(unsigned char *buf, size_t buflen)
 {
   size_t d = 0;

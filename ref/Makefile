@@ -7,11 +7,11 @@ HEADERS = api.h params.h sign.h polyvec.h packing.h poly.h reduce.h ntt.h \
 
 all: PQCgenKAT_sign test/test_vectors test/test_dilithium
 
-PQCgenKAT_sign: $(SOURCES) rng.c PQCgenKAT_sign.c $(HEADERS) rng.h
-	$(CC) $(NISTFLAGS) $(SOURCES) rng.c PQCgenKAT_sign.c -o $@ -lcrypto -ldl
+PQCgenKAT_sign: $(SOURCES) rng_sane.c PQCgenKAT_sign.c $(HEADERS) rng_sane.h
+	$(CC) $(NISTFLAGS) $(SOURCES) rng_sane.c PQCgenKAT_sign.c -o $@
 
-test/test_vectors: $(SOURCES) rng.c test/test_vectors.c $(HEADERS) rng.h
-	$(CC) $(NISTFLAGS) $(SOURCES) rng.c test/test_vectors.c -o $@ -lcrypto -ldl
+test/test_vectors: $(SOURCES) rng_sane.c test/test_vectors.c $(HEADERS) rng_sane.h
+	$(CC) $(NISTFLAGS) $(SOURCES) rng_sane.c test/test_vectors.c -o $@
 
 test/test_dilithium: $(SOURCES) randombytes.c test/test_dilithium.c \
   test/speed.c test/cpucycles.c $(HEADERS) randombytes.h test/speed.h \
