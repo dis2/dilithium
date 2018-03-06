@@ -21,7 +21,7 @@ randombytes(unsigned char *x, unsigned long long xlen)
 	for (;(ptr < SHAKE256_RATE) && xlen; xlen--)
 	    *x++ = pending[ptr++];
 	if (!xlen) break;
-	shake256_squeezeblocks(x, 1, state);
+	shake256_squeezeblocks(pending, 1, state);
 	ptr = 0;
     } while (xlen);
 }
